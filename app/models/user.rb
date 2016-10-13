@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :votes, :questions, :answers, :comments
   # users.password_hash in the database is a :string
 
   # validates_presence_of :first_name
