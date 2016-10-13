@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  has_many :votes
+  has_many :questions
+  has_many :answers
+  has_many :comments
   # users.password_hash in the database is a :string
 
   # validates_presence_of :first_name
@@ -8,7 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password
   validates_presence_of :email
   validates_uniqueness_of :email
-
+#
   def password
     @password ||= BCrypt::Password.new(password_hash)
   end
