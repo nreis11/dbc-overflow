@@ -1,4 +1,3 @@
-
 # USERS INDEX
 get '/users' do
   @users = User.all
@@ -28,7 +27,7 @@ post '/users' do
     @errors = ["Passwords do not match!"]
     erb :'users/new'
   end
-  
+
 end
 
 # USERS SHOW
