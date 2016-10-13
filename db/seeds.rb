@@ -1,39 +1,39 @@
 # type_array = ["question"]
 
-users = 10.times.map do
-  User.create!( :username  => Faker::Internet.user_name,
+users = 10.times do
+  User.create( :username  => Faker::Internet.user_name,
                 :email      => Faker::Internet.email,
                 :password   => 'password'
                 )
 end
 
-questions = 2.times.map do
-  Question.create!( :title => Faker::Hipster.sentence,
-                    :body => Faker::Hipster.paragraph,
+questions = 2.times do
+  Question.create( :title => Faker::Internet.user_name,
+                    :body => Faker::Internet.email,
                     :user_id => rand(1..10)
                   )
 end
 
-answers = 10.times.map do
-  Answer.create!( :body => Faker::Hipster.paragraph,
+answers = 10.times do
+  Answer.create( :body => Faker::Internet.user_name,
                   :chosen => [true, false].sample,
                   :question_id => rand(1..2),
                   :user_id => rand(1..10)
                   )
 end
 
-comments = 20.times.map do
-  Comment.create!(:body => Faker::Hipster.paragraph,
+comments = 20.times do
+  Comment.create(:body => Faker::Internet.user_name,
                   :commentable_id => rand(1..12),
-                  # :commentable_type =>
+                  :commentable_type => ["question", "answer"].sample,
                   :user_id => rand(1..10)
                   )
 end
 
-votes = 20.times.map do
-  Vote.create!( :type => ["up","down"].sample,
+votes = 20.times do
+  Vote.create( :vote_type => ["up","down"].sample,
                   :votable_id => rand(1..32),
-                  # :votable_type =>
+                  :votable_type => ["question", "answer", "comment"].sample,
                   :user_id => rand(1..10)
                   )
 end
