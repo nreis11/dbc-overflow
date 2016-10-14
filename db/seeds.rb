@@ -24,16 +24,16 @@ end
 
 comments = 20.times do
   Comment.create(:body => Faker::Internet.user_name,
-                  :commentable_id => rand(1..12),
-                  :commentable_type => ["question", "answer"].sample,
+                  :commentable_id => rand(1..2),
+                  :commentable_type => ["Question", "Answer"].sample,
                   :user_id => rand(1..10)
                   )
 end
 
 votes = 20.times do
   Vote.create( :vote_type => ["up","down"].sample,
-                  :votable_id => rand(1..32),
-                  :votable_type => ["question", "answer", "comment"].sample,
+                  :votable_id => rand(1..2),
+                  :votable_type => ["Question", "Answer", "Comment"].sample,
                   :user_id => rand(1..10)
                   )
 end
