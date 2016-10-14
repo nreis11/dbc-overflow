@@ -4,8 +4,11 @@ get '/questions/?' do
 end
 
 post '/questions/?' do
-  # new question logic here
-  redirect "/questions/#{@question.id}"
+  p params
+  user_id = session[:id]
+  question = Question.create(title: params[:title], body: params[:body], user_id: user_id)
+  p question
+  redirect "/questions/#{question.id}"
 end
 
 get '/questions/new/?' do
