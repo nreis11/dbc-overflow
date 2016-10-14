@@ -2,9 +2,11 @@
 
 <% if @questions %>
   <% @questions.each do |question| %>
-    <h2><%= question.title %></h2>
+    <h2><a href="/questions/<%= question.id %>"><%= question.title %></a></h2>
     <p>asked by <%= question.user.username %> | <%= question.answers.count %> answers | <%= question.comments.count %> comments</p>
   <% end %>
 <% else %>
   <p>Sorry no questions</p>
 <% end %>
+
+<p><a href="/questions/new">submit new question</a></p>
