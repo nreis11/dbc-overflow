@@ -1,4 +1,6 @@
 <!-- viewable by only current logged in user -->
+<a href="/">Home</a>
+<a href="/questions">Questions</a>
 <% if current_user %>
   <a href="/users/<%= current_user.id %> ">Profile Page</a>
   <form action="/sessions" method="POST">
@@ -7,7 +9,6 @@
   </form>
   <!-- viewable by all users -->
 <% else %>
-  <a href="/">Home</a>
   <a href="/sessions/new">Login</a>
   <a href="/users/new">Register</a>
 <% end %>
