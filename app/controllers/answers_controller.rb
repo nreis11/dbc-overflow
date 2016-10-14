@@ -13,10 +13,11 @@ get '/questions/:question_id/answers/new' do
 end
 
 post '/questions/:question_id/answers' do
-  @question = Question.all
-  @answer = Answer.all
+  question = Question.find(params[:question_id])
+  p question
+  # answer = Answer.all
   user_id = session[:id]
-  new_answer = Answer.create(body: params[:body], question_id: params[:question_id], user_id: user_id)
+  new_answer = question.answers.create(body: params[:body], user_id: user_id)
   redirect "/"
 end
 
