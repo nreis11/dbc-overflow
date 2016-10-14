@@ -1,5 +1,6 @@
-<form action="/questions/:question_id/answers" method="POST">
+<form action="/questions/<%= params[:question_id] %>/answers" method="POST">
   <label>Create new answer</label>
+  <input type="hidden" name="question_id" value=<% params[:question_id] %>>
   <input type="text" name="body" placeholder="Enter answer">
   <input type="submit" name="Submit">
 </form>
