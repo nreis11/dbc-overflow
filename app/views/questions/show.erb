@@ -1,1 +1,58 @@
-<h1>show individual question and all their comments here</h1>
+<style>
+.question-answers-comments {
+  margin-left: 30px;
+}
+
+.answer-comments {
+  margin-left: 60px;
+}
+</style>
+
+<p>*********************</p>
+
+<div class="question">
+<h1><%= @question.title %></h1>
+  <p>Asked by: <%= @question.user.username %></p>
+  <p><%= @question.body %></p>
+</div>
+
+<p>*********************</p>
+<div class="question-answers-comments">
+<% if @question.answers %>
+  <% @question.answers.each do |answer| %>
+    <p>Answered by: <%= answer.user.username %></p>
+    <p><%= answer.body %></p>
+    <p>---------------------</p>
+
+    <div class="answer-comments">
+    <% if answer.comments %>
+      <% answer.comments.each do |a_comment|%>
+      <p>Commented by: <%= a_comment.user.username %></p>
+        <%= a_comment.body %>
+      <% end %>
+    <% else %>
+      <p>This answer has no comments</p>
+    <% end %>
+    </div>
+
+  <% end %>
+<% else %>
+  <p>this questions hasn't been answered yet</p>
+<% end %>
+</div>
+<p>*********************</p>
+
+<div class="question-answers-comments">
+<% if @question.comments %>
+  <% @question.comments.each do |comment| %>
+    <p>---> Commented by: <%= comment.user.username %></p>
+    <p>---> <%= comment.body %></p>
+    <p>---------------------</p>
+  <% end %>
+<% else %>
+  <p>this questions has no comments yet</p>
+<% end %>
+</div>
+<p>*********************</p>
+
+
