@@ -54,5 +54,8 @@
 <% end %>
 </div>
 <p>*********************</p>
-
+<% if logged_in? %>
+<p><a href="/questions/<%= @question.id %>/answers/new">Submit new answer</a></p>
+<p><a href="/questions/<%= @question.id %>/comments/new">Submit new question</a></p>
+<% end %>
 
